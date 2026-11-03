@@ -1,0 +1,18 @@
+lsblk
+fdisk /dev/sdb
+fdisk /dev/sdc
+fdisk /dev/sdd
+lsblk
+pvcreate /dev/sdb1
+pvcreate /dev/sdc1
+pvcreate /dev/sdd1
+pvs
+vgcreate datos /dev/sdb1 /dev/sdc1 /dev/sdd1
+vgs
+lvcreate -L 1G -n www datos
+lvcreate -L 4G -n salvas datos
+lvs
+lsblk
+lvextend -L 2g /dev/datos/www
+lvs
+history > history.txt
